@@ -1,0 +1,48 @@
+webhook-handler:
+  enabled: true
+  replicaCount: 1
+
+  image:
+    repository: "${DOCKER_IMAGE_REPOSITORY}"
+    tag: "${DOCKER_IMAGE_TAG}"
+    pullPolicy: Always
+
+  securityContext:
+    runAsNonRoot: false
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    seccompProfile:
+      type: RuntimeDefault
+
+  service:
+    enabled: true
+    type: ClusterIP
+    labels:
+      monitoring.salestrigger/scrape: "true"
+    ports:
+      - name: metrics
+        port: 9095
+        targetPort: 9095
+        protocol: TCP
+
+  command: ["/bin/bash", "-c"]
+  args:
+    - "python app/webhook_handler/serve.py --env=${SCOPE}"
+
+  envFromSecrets:
+    - webhook-handler
+
+  externalSecret:
+    enabled: true
+    name: webhook-handler
+    refreshInterval: 1h
+    secretStoreRef:
+      name: vault-salestrigger
+      kind: ClusterSecretStore
+    dataFrom:
+      - extract:
+          key: ${SCOPE}/webhook-handler
+      - extract:
+          key: ${SCOPE}/.general
