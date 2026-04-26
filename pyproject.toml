@@ -38,21 +38,21 @@ force-single-line = true
 addopts = "--cov=webhook_handler --cov-report=term-missing"
 testpaths = ["tests"]
 
-[tool.coverage.run]
-omit = ["webhook_handler/main.py", "webhook_handler/serve.py"]
-
-[tool.uv]
-override-dependencies = [
-    "utils-library>=0.0.0",
-]
-
-[tool.uv.sources]
-notification-registry = { path = "../notification-registry" }
-utils-library = { path = "../UtilsLibrary" }
-
-[tool.setuptools.packages.find]
-include = ["webhook_handler*"]
-
-[build-system]
-requires = ["setuptools>=42"]
-build-backend = "setuptools.build_meta"
+#[tool.coverage.run]
+#omit = ["webhook_handler/main.py", "webhook_handler/serve.py"]
+#
+#[tool.uv]
+#override-dependencies = [
+#    "utils-library>=0.0.0",
+#]
+#
+#[tool.uv.sources]
+#notification-registry = { path = "../notification-registry" }
+#utils-library = { path = "../UtilsLibrary" }
+#
+#[tool.setuptools.packages.find]
+#include = ["webhook_handler*"]
+#
+#[build-system]
+#requires = ["setuptools>=42"]
+#build-backend = "setuptools.build_meta"
