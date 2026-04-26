@@ -5,3 +5,4 @@ include:
 variables:
   TEST_GROUP: "python-full"
   LINT: "ruff"
+  PACKAGE_PUBLISH: "uv"
