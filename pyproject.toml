@@ -9,7 +9,7 @@ version = "0.0.1"
 requires-python = ">=3.12.4,<4.0"
 dependencies = [
     "utils-library[full]>=0.0.120",
-    "notification-registry==0.0.1rc1+local.d3ba783",
+    "notification-registry==0.0.1rc1+local.d015444",
     "httpx>=0.27",
 ]
 
@@ -37,21 +37,5 @@ force-single-line = true
 addopts = "--cov=webhook_handler --cov-report=term-missing"
 testpaths = ["tests"]
 
-#[tool.coverage.run]
-#omit = ["webhook_handler/main.py", "webhook_handler/serve.py"]
-#
-#[tool.uv]
-#override-dependencies = [
-#    "utils-library>=0.0.0",
-#]
-#
 #[tool.uv.sources]
 #notification-registry = { path = "../notification-registry" }
-#utils-library = { path = "../UtilsLibrary" }
-#
-#[tool.setuptools.packages.find]
-#include = ["webhook_handler*"]
-#
-#[build-system]
-#requires = ["setuptools>=42"]
-#build-backend = "setuptools.build_meta"

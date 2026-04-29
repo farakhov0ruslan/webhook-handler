@@ -15,7 +15,7 @@ class WebhookHandlerConfig(AbstractMetaConfig):
         metadata={"docs": "Delay between retries in seconds", "required": False},
     )
     metrics_port: int = field(
-        default=9095,
+        default=9090,
         metadata={"docs": "Prometheus metrics port", "required": False},
     )
 

@@ -23,8 +23,8 @@ webhook-handler:
       monitoring.salestrigger/scrape: "true"
     ports:
       - name: metrics
-        port: 9095
-        targetPort: 9095
+        port: 9090
+        targetPort: 9090
         protocol: TCP
 
   command: ["/bin/bash", "-c"]

@@ -14,7 +14,6 @@ WEBHOOK_URL = "https://webhook.example.com/notify"
 
 
 class ResetPasswordPayloadFactory(ModelFactory[ResetPasswordPayload]):
-    recipient_email = Use(lambda: f"user-{uuid4().hex[:8]}@example.com")
     reset_url = "https://example.com/reset?token=abc"
     expires_at = Use(lambda: datetime.now(UTC) + timedelta(hours=1))
     user_name = "Test User"
@@ -25,7 +24,6 @@ class ResetPasswordPayloadFactory(ModelFactory[ResetPasswordPayload]):
 
 
 class AnalyticsPayloadFactory(ModelFactory[AnalyticsPayload]):
-    recipient_email = Use(lambda: f"user-{uuid4().hex[:8]}@example.com")
     report_type = "weekly"
     period_start = Use(lambda: datetime.now(UTC) - timedelta(days=7))
     period_end = Use(lambda: datetime.now(UTC))
@@ -38,7 +36,6 @@ class AnalyticsPayloadFactory(ModelFactory[AnalyticsPayload]):
 
 
 class LinkedInDisconnectedPayloadFactory(ModelFactory[LinkedInDisconnectedPayload]):
-    recipient_email = Use(lambda: f"user-{uuid4().hex[:8]}@example.com")
     reconnect_url = "https://example.com/linkedin/reconnect"
     disconnected_at = Use(lambda: datetime.now(UTC))
     reason = "session_expired"
