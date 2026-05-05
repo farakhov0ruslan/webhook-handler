@@ -44,6 +44,6 @@ def serve(env: str = "local") -> None:
 
 if __name__ == "__main__":  # pragma: no cover
     configure_logger("webhook_handler", "debug", json_logger=True)
-    configure_logger("utils_library", "INFO", json_logger=True)
+    configure_logger("utils_library", "INFO")
     configure_logger(__name__, "INFO", json_logger=True)
     fire.Fire(serve)
